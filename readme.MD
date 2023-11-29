@@ -43,7 +43,7 @@ Rendez vous sur le tag <b>"ajouterBoutonLumineux"</b> pour ajouter des boutons �
 Le tag <b>"correction-ajouterBoutonLumineux"</b> présente une correction de l'exercice.
 
 Rendez vous sur le tag <b>"ajouterMinuterie"</b> pour ajouter une minuterie dans le couloir. La minuterie coupe l'eclairage au bout de 3 secondes. Elle peut être ré-armée par un bouton.
-- Ajoutez au diagramme de classe la minuterie Proposez un diagramme de classe qui repprend le pattern du médiateur (cf 3-Mediator.png) en incluant la notion de bouton à veilleuse.
-- Proposez un diagramme d'activité qui présente l'usage de la minuterie dans le couloir
+- Ajoutez au diagramme de classe la minuterie
+- Proposez un diagramme de séquence qui présente l'usage de la minuterie dans le couloir
 
 Le tag <b>"correction-ajouterBoutonLumineux"</b> présente une correction de l'exercice.

@@ -1,0 +1,44 @@
+@startuml
+
+autonumber
+
+actor Main as m
+participant "eclairageCouloir:Couloir" as e
+participant "s1:Switch" as s1
+participant "l1:Light" as l1
+participant "m:Minuterie" as min
+
+
+
+group boutons veilleuse
+    m -> e : addSwitch(s1)
+    m -> e : addLight(l1)
+    m -> e : addMinuterie(m)
+
+    m -> s1 : appuyer()
+    s1 -> s1 : modifier();
+    s1 -> e : concilier(s1)
+    e -> e : allumer();
+    e -> l1 : allumer()
+    e -> min : armer()
+
+    note over s1 : un peu plus tard
+    m -> s1 : appuyer()
+    s1 -> s1 : modifier();
+    s1 -> e : concilier(s1)
+    e -> e : allumer();
+    e -> l1 : allumer()
+    e -> min : armer()
+
+    note over min : One eternity later
+
+    min -> min : eteindre()
+    min -> e : concilier(m)
+    e -> e : eteindre();
+    e -> l1 : eteindre()
+
+
+end
+
+
+@enduml

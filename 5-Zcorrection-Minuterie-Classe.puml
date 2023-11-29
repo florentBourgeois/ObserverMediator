@@ -1,0 +1,60 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+Abstract class Installation{
+    concilier(Commutateur)
+}
+class Couloir{
+    isOn: boolean
+    concilier(Commutateur)
+    allumer()
+    eteindre()
+}
+
+abstract class Commutateur{
+    setInstallation(Installation)
+    modifier()
+}
+
+class Switch{
+    appuyer()
+}
+
+class Light{
+    allumer()
+    eteindre()
+    isOn()
+    isOn: boolean
+
+}
+
+class SwitchLight{
+    allumer()
+    eteindre()
+}
+
+class Minuterie{
+    armer()
+    eteindre()
+}
+
+Commutateur <|-- Minuterie
+
+Couloir -> "min" Minuterie
+
+Switch <|-- SwitchLight
+Light "l" -* SwitchLight
+
+Couloir o- "*" SwitchLight
+
+Installation <-o Commutateur : m
+
+
+Installation <|-- Couloir
+
+Commutateur <|-- Switch
+Couloir o- "*" Switch
+Couloir o-- "*" Light
+
+
+@enduml
