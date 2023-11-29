@@ -1,0 +1,18 @@
+@startuml
+skinparam linestyle ortho
+
+rectangle "s1:Switch" as s1
+rectangle "s2:Switch" as s2
+rectangle "l:Light" as l
+rectangle ":OR" as or
+
+
+s1 -> or
+or <-- s2
+
+or --> s1
+s2 --> or
+
+or -> l
+or <- l
+@enduml

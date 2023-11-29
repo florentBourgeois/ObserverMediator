@@ -3,6 +3,7 @@ import Observer from './Observer.js';
 export default class Sujet {
     constructor() {
         this.observers = [];
+        this.isOn = false;
     }
 
     subscribe(observer) {

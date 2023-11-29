@@ -1,0 +1,46 @@
+@startuml
+
+autonumber
+
+actor Main as m
+participant "s1:Switch" as s1
+participant "s2: Switch" as s2
+participant "or:OR" as or
+participant "l1:Light" as l1
+
+
+m --> s1 : new Switch()
+m --> s2 : new Switch()
+m --> or : new OR(s1, s2)
+m --> l1 : new Light(or)
+
+group activate one switch
+    m -> s1 : comute()
+    s1 -> s1 : isOn = true;\nnotifie();
+    s1 -> or : update()
+    or -> s1 : isOn ?
+    s1 --> or : true
+    or -> s2 : isOn ?
+    s2 --> or : false
+    or -> or : isOn = s1!=s2;\nnotifie();
+    or -> l1 : update()
+    l1 -> or : isOn ?
+    or --> l1 : true
+end
+
+group activate second switch
+    m -> s2 : comute()
+    s2 -> s2 : isOn = true;\nnotifie();
+    s2 -> or : update()
+    or -> s1 : isOn ?
+    s1 --> or : true
+    or -> s2 : isOn ?
+    s2 --> or : true
+    or -> or : isOn = s1!=s2;\nnotifie();
+    or -> l1 : update()
+    l1 -> or : isOn ?
+    or --> l1 : false
+end
+
+
+@enduml

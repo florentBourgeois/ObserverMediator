@@ -3,7 +3,6 @@ import Sujet from './Sujet.js';
 export default class BasicSwitch extends Sujet {
     constructor() {
         super();
-        this.isOn = false;
     }
 
     comute() {

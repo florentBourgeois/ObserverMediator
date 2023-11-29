@@ -18,6 +18,7 @@ Le tag <b>"correction-exercice-observateur"</b> Présente une correction de l'ex
 Rendez vous sur le tag <b>ExerciceOr</b>. Le but est d'implémenter la notion de va et viens à deux interrupteur (OR) au sein de l'application. Une lampe peut être pilotée par un interrupteur OU par un va et vient. 
 - Proposez un diagramme de classe qui repprend la structure proposée et incluez la notion de va et vient (en fonction du diagramme précédent proposé ; la structure précédente sera impactée)
 - Propoez un diagramme de séquence qui présente le comportement de l'usage d'un va et vient.
+- Propoez un diagramme Objet qui permetra de réaliser la séquence.
 - Développer le va et vient dans le dossier javascript/Observer
 - Implémentez dans le main le comportement de votre séquence.
 

@@ -2,6 +2,7 @@ import SimpleLight from './jsDemo/SimpleLight.js';
 import SimpleBlueLight from "./jsDemo/SimpleBlueLight.js";
 import BasicSwitch from './Observer/BasicSwitch.js';
 import Light from "./Observer/Light.js";
+import Or from "./Observer/Or.js";
 
 function jsDemo(){
     console.log('\n\n\n-----------usage de base de JS-----------')
@@ -42,6 +43,13 @@ function observerDemonstration(){
     console.log("-----------comute the BasicSwitch")
     basicSwitch.comute();
 
+
+    console.log("\n---------switch and or ----------")
+    let switchForOr = new BasicSwitch();
+    let or = new Or(basicSwitch, switchForOr);
+    let lightOr = new Light(or);
+    basicSwitch.comute();
+    switchForOr.comute();
 }
 
 

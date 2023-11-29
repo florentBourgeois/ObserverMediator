@@ -1,14 +1,14 @@
 import Observer from "./Observer.js";
 
 export default class Light extends Observer {
-  constructor(basicSwitch) {
+  constructor(sujet) {
     super();
-    this.basicSwitch = basicSwitch;
-    this.basicSwitch.subscribe(this);
+    this.sujet = sujet;
+    this.sujet.subscribe(this);
   }
 
   update() {
-    if (this.basicSwitch.isOn) {
+    if (this.sujet.isOn) {
       console.log("Light is on");
     } else {
       console.log("Light is off");
