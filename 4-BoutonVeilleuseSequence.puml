@@ -1,0 +1,49 @@
+@startuml
+
+autonumber
+
+actor Main as m
+participant "eclairageCouloir:Couloir" as e
+participant "s1:Switch" as s1
+participant "s2:Switch" as s2
+participant "l1:Light" as l1
+
+participant "sl1:SwitchLumineux" as sl1
+participant "sl2:SwitchLumineux" as sl2
+participant "veilleuse1:Light" as v1
+participant "veilleuse2:Light" as v2
+
+
+group boutons veilleuse
+    m -> e : addSwitch(s1)
+    m -> e : addSwitch(s2)
+    m -> sl1 : new switchLumineux(veilleuse1)
+    m -> sl2 : new switchLumineux(veilleuse2)
+    m -> e : addSwitchLumineux(sl1)
+    m -> e : addSwitchLumineux(sl2)
+    e -> e : addLight(l1)
+
+    m -> s1 : appuyer()
+    s1 -> s1 : modifier();
+    s1 -> e : concilier(s1)
+    e -> e : allumer();
+    e -> l1 : allumer()
+    e -> sl1 : eteindre()
+    sl1 -> v1 : eteindre()
+    e -> sl2 : eteindre()
+    sl2 -> v2 : eteindre()
+
+
+    m -> s2 : appuyer()
+    s2 -> s2 : modifier();
+    s2 -> e : concilier(s2)
+    e -> e : eteindre();
+    e -> l1 : eteindre()
+    e -> sl1 : allumer()
+    sl1 -> v1 : allumer()
+    e -> sl2 : allumer()
+    sl2 -> v2 : allumer()
+end
+
+
+@enduml

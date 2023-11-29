@@ -4,6 +4,11 @@ import BasicSwitch from './Observer/BasicSwitch.js';
 import Light from "./Observer/Light.js";
 import Or from "./Observer/Or.js";
 
+import Couloir from "./Mediator/Couloir.js";
+import CouloirEvolutif from "./Mediator/CouloirEvolutif.js";
+import Switch from "./Mediator/Switch.js";
+import MediatorLight from "./Mediator/Light.js";
+
 function jsDemo(){
     console.log('\n\n\n-----------usage de base de JS-----------')
     let light = new SimpleLight();
@@ -55,6 +60,28 @@ function observerDemonstration(){
 
 function mediatorDemonstration(){
     console.log('\n\n\n-----------démonstration des mediator-----------')
+    console.log("-----------couloir simple-----------")
+    let couloir = new Couloir();
+    let s1 = couloir.s1;
+    let s2 = couloir.s2;
+    s1.appuyer();
+    s2.appuyer();
+    s2.appuyer();
+
+
+    console.log("-----------couloir evolutif-----------")
+    let couloirEvolutif = new CouloirEvolutif();
+    let s3 = new Switch();
+    let l1 = new MediatorLight();
+    let l2 = new MediatorLight();
+    let l3 = new MediatorLight();
+    couloirEvolutif.addSwitch(s3);
+    couloirEvolutif.addLight(l1);
+    s3.appuyer();
+    couloirEvolutif.addSwitch(new Switch());
+    couloirEvolutif.addLight(l2);
+    couloirEvolutif.addLight(l3);
+    s3.appuyer();
 }
 
 jsDemo();
