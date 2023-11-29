@@ -1,0 +1,36 @@
+@startuml
+skinparam linestyle ortho
+
+rectangle "s1:Switch" as s1
+rectangle "s2:Switch" as s2
+rectangle "s3:SwitchLumineux" as s3
+rectangle "s4:SwitchLumineux" as s4
+rectangle "l1:Light" as l1
+rectangle "l2:Light" as l2
+
+rectangle "veilleuse1:Light" as v1
+rectangle "veilleuse2:Light" as v2
+
+rectangle ":Couloir" as c
+
+c --> s1
+c --> s2
+
+s3 <- c
+c -> s4
+
+c <-- s1
+c <-- s2
+
+s3 -> c
+c <- s4
+
+
+
+l1 <-- c
+l2 <-- c
+
+v1 <- s3
+s4 -> v2
+
+@enduml

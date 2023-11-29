@@ -8,6 +8,8 @@ import Couloir from "./Mediator/Couloir.js";
 import CouloirEvolutif from "./Mediator/CouloirEvolutif.js";
 import Switch from "./Mediator/Switch.js";
 import MediatorLight from "./Mediator/Light.js";
+import CouloirEvolutifEtLumineux from "./Mediator/CouloirEvolutifEtLumineux.js";
+import SwitchLumineux from "./Mediator/SwitchLumineux.js";
 
 function jsDemo(){
     console.log('\n\n\n-----------usage de base de JS-----------')
@@ -82,6 +84,21 @@ function mediatorDemonstration(){
     couloirEvolutif.addLight(l2);
     couloirEvolutif.addLight(l3);
     s3.appuyer();
+
+
+
+    console.log("-----------boutons lumineux-----------")
+    let couloirEvolutifEtLumineux = new CouloirEvolutifEtLumineux();
+    let sLumineux1 = new SwitchLumineux(new MediatorLight());
+    let sLumineux2 = new SwitchLumineux(new MediatorLight());
+
+    couloirEvolutifEtLumineux.addSwitch(s3);
+    couloirEvolutifEtLumineux.addSwitchLumineux(sLumineux1);
+    couloirEvolutifEtLumineux.addSwitchLumineux(sLumineux2);
+    couloirEvolutifEtLumineux.addLight(l1);
+    couloirEvolutifEtLumineux.addLight(l2);
+    sLumineux1.appuyer();
+    sLumineux2.appuyer();
 }
 
 jsDemo();
