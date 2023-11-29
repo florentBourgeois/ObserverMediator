@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Subject{
+    subscribe(Observer)
+    unSubscribe(Observer)
+    notifier()
+}
+
+interface Observer {
+    update()
+}
+
+Subject -> "*" Observer
+
+class RealSubject {
+    doSomething()
+}
+
+Subject <|-- RealSubject
+
+class ObserverA {
+    update()
+}
+
+Observer <|.. ObserverA
+RealSubject "s" <- ObserverA
+@enduml

@@ -1,0 +1,55 @@
+@startuml
+
+autonumber
+
+actor Main as m
+participant "s1:Switch" as s1
+participant "l1:Light" as l1
+
+
+m --> s1 : new Switch()
+
+group no light on the switch [no light on the switch]
+     m -> s1 : comute()
+    s1 -> s1 : isOn = true; notifie();
+    m -> s1 : comute()
+    s1 -> s1 : isOn = false; notifie();
+end
+
+group one light on the switch [one light on the switch]
+    m --> l1 : new Light(s1)
+    m -> s1 : comute()
+    s1 -> s1 : isOn = true; notifie();
+    s1 -> l1 : update()
+    l1 -> s1 : isOn ?
+    s1 --> l1 : true
+    l1 -> l1 : turnOn()
+
+    m -> s1 : comute()
+    s1 -> s1 : isOn = false; notifie();
+    s1 -> l1 : update()
+    l1 -> s1 : isOn ?
+    s1 --> l1 : false
+    l1 -> l1 : turnOff()
+end
+
+participant "l2:Light" as l2
+
+
+group two light on the switch [two light on the switch]
+    m --> l2 : new Light(s1)
+    m -> s1 : comute()
+    s1 -> s1 : isOn = true; notifie();
+    s1 -> l1 : update()
+    l1 -> s1 : isOn ?
+    s1 --> l1 : true
+    l1 -> l1 : turnOn()
+    s1 -> l2 : update()
+    l2 -> s1 : isOn ?
+    s1 --> l2 : true
+    l2 -> l2 : turnOn()
+
+end
+
+
+@enduml
