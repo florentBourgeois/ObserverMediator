@@ -1,0 +1,40 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class MediateurAbstrait{
+    concilier(P:Partenaire)
+}
+
+abstract class Partenaire{
+    modifier()
+}
+
+note right of Partenaire::modifier
+    m.concilier(this)
+end note
+
+MediateurAbstrait <-o Partenaire : m
+
+class MediateurConcret {
+    creerPartenaires()
+    ajouterPartenaire(P:Partenaire)
+    concilier(P:Partenaire)
+}
+
+note bottom of MediateurConcret {
+    ajouter ou creer dépend de la situation
+    configuration figée (réseau cablé fixe) ? -> créer
+    configuration dynamique (ajout d'éléments) ? -> ajouter
+}
+
+MediateurAbstrait <|-- MediateurConcret
+
+Partenaire <|-- Variante_1
+Partenaire <|--- Variante_2
+Partenaire <|---- Variante_3
+MediateurConcret o- "*" Variante_1
+MediateurConcret o- "*" Variante_2
+MediateurConcret o- "*" Variante_3
+
+
+@enduml

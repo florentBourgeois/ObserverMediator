@@ -1,0 +1,55 @@
+@startuml
+
+autonumber
+
+actor Main as m
+participant "eclairageCouloir:Couloir" as e
+participant "s1:Switch" as s1
+participant "s2:Switch" as s2
+participant "l1:Light" as l1
+
+participant "s3:Switch" as sl1
+participant "s4:Switch" as sl2
+participant "l2:Light" as l2
+
+
+group couloir simple
+    m -> s1 : appuyer()
+    s1 -> s1 : modifier();
+    s1 -> e : concilier(s1)
+    e -> e : allumer();
+    e -> l1 : allumer()
+
+    m -> s2 : appuyer()
+    s2 -> s2 : modifier();
+    s2 -> e : concilier(s2)
+    e -> e : eteindre();
+    e -> l1 : eteindre()
+end
+
+
+group couloir adaptable
+    m -> e : addSwitch(s1)
+    m -> e : addSwitch(s2)
+    m -> e : addSwitch(s3)
+    m -> e : addSwitch(s4)
+    m -> e : addLight(l1)
+
+    m -> s1 : appuyer()
+    s1 -> s1 : modifier();
+    s1 -> e : concilier(s1)
+    e -> e : allumer();
+    e -> l1 : allumer()
+
+    m -> e : addLight(l2)
+
+
+    m -> sl2 : appuyer()
+    sl2 -> sl2 : modifier();
+    sl2 -> e : concilier(s4)
+    e -> e : eteindre();
+    e -> l1 : eteindre()
+    e -> l2 : eteindre()
+end
+
+@enduml
