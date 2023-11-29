@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Sujet{
+    subscribe(Observer)
+    unSubscribe(Observer)
+    notifier()
+}
+
+interface Observer {
+    update()
+}
+
+Sujet -> "*" Observer
+
+class Switch {
+    isOn : boolean
+    comute()
+}
+
+Sujet <|-- Switch
+
+class Light {
+    update()
+}
+
+Observer <|.. Light
+Switch "switch" <- Light
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+skinparam linestyle ortho
+
+rectangle "s1:Switch" as s1
+rectangle "l1:Light" as l1
+rectangle "l2:Light" as l2
+rectangle "l3:Light" as l3
+
+s1 -up-> l1
+s1 -> l2
+s1 --> l3
+
+l1 --> s1
+l2 -> s1
+l3 --> s1
+@enduml
